@@ -7,14 +7,14 @@ on:
 
 jobs:
     build:
-        runs-on: self-hosted
+        runs-on: [ubuntu-latest]
 
         steps:
             - name: Checkout Repository
               uses: actions/checkout@v3
             
             - name: Login to docker hub
-              run: docker login -u ${{ secrets.DOCKER_USERNAME}} -p ${{ secrets.DOCKER_PASSWORD}}
+              run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
             - name: Build docker image
               run: docker build -t barcafan830/nodejs-app
@@ -37,8 +37,8 @@ jobs:
 
             - name: Run docker container
               run: docker run -p 8000:8000 \
-                    -e PORT=${{secrets.PROD.PORT}} \
-                    -e DATABASE_URL=${{secrets.PROD.DATABASE_URL}} \
+                    -e PORT=${{ secrets.PROD.PORT }} \
+                    -e DATABASE_URL=${{ secrets.PROD.DATABASE_URL }} \
                     --name nodejs-app-container \
                     barcafan830/nodejs-app:latest
 
