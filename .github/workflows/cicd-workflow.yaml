@@ -11,16 +11,17 @@ jobs:
 
         steps:
             - name: Checkout Repository
-              uses: actions/checkout@v3
-            
+              uses: actions/checkout@v4
+
             - name: Login to docker hub
               run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
             - name: Build docker image
-              run: docker build -t barcafan830/nodejs-app
+              run: docker build -t barcafan830/nodejs-app:latest .
 
             - name: Publish image to docker hub
               run: docker push barcafan830/nodejs-app:latest
+
 
 
     deploy:
