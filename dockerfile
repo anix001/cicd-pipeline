@@ -13,10 +13,13 @@ RUN npm install
 # Copy the rest of the application files
 COPY . .
 
-# Build the project (assuming there is a build step, e.g., for TypeScript or Webpack)
+# Generate Prisma Client
+RUN npx prisma generate
+
+# Build the project (compile TypeScript to JavaScript)
 RUN npm run build
 
-# Expose the port that the app will run on
+# Expose the port the app will run on
 EXPOSE 8000
 
 # Command to start the app
