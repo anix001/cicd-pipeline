@@ -37,7 +37,7 @@ jobs:
               run: docker rm -f nodejs-app-container
 
             - name: Run docker container
-              run: docker run -d -p 8000:8000 -e PORT=${{ secrets.PROD.PORT }} -e DATABASE_URL=${{ secrets.PROD.DATABASE_URL }} -e SOME_VALUE=someval --name nodejs-app-container barcafan830/nodejs-app:latest
+              run: docker run -d -p 8000:8000 -e PORT=${{ secrets.PROD.PORT }} -e DATABASE_URL=${{ secrets.PROD.DATABASE_URL }} --name nodejs-app-container barcafan830/nodejs-app:latest
 
 
 
