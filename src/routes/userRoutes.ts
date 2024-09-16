@@ -28,7 +28,7 @@ router.get('/', async(req:Request, res:Response)=>{
      try{
        const users = await prisma.user.findMany();
        return res.status(200).send({
-        message:'Users fetched successfully!!',
+        message:'Users fetched successfully',
         data: users
       })
      }catch(error){
