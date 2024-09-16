@@ -36,8 +36,11 @@ jobs:
             - name: Delete old container
               run: docker rm -f nodejs-app-container
 
+            - name: Print env
+              run: echo "My value ${{secrets.PROD.PORT}} ${{secrets.PROD.DATABASE_URL}}"
+
             - name: Run docker container
-              run: docker run -d -p 8000:8000 -e PORT=${{ secrets.PROD.PORT }} -e DATABASE_URL=${{ secrets.PROD.DATABASE_URL }} --name nodejs-app-container barcafan830/nodejs-app:latest
+              run: docker run -d -p 8000:8000 -e PORT=${{ secrets.PROD.PORT }} -e DATABASE_URL=${{ secrets.PROD.DATABASE_URL }} -e SOME_VALUE=somevalue --name nodejs-app-container barcafan830/nodejs-app:latest
 
 
 
