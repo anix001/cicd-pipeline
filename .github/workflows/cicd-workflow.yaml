@@ -22,10 +22,10 @@ jobs:
             - name: Publish image to docker hub
               run: docker push barcafan830/nodejs-app:latest
 
-            - name: Create an env file in the project directory
+            - name: Create an env file
+              working-directory: /actions-runner/_work/cicd-pipeline/cicd-pipeline
               run: |
-                echo "${{ secrets.PROD }}" > $GITHUB_WORKSPACE/.env
-            
+                echo "${{ secrets.PROD }}" > .env    
 
 
     deploy:
