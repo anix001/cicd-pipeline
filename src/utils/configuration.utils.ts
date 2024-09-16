@@ -10,7 +10,7 @@ interface Config{
 };
 
 const config: Config = {
-    port: parseInt(process.env.PORT as string) || 8000,
+    port: parseInt(process.env.PORT as string),
     databaseUrl: process.env.DATABASE_URL as string,
     // allowedOrigins : process.env.ALLOWED_ORIGINS?.split(',') || []
 };
