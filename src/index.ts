@@ -19,7 +19,7 @@ app.use(cors(corsOptions));
 app.use("/api", appRoutes);
 
 app.get('/', (req:Request, res:Response)=>{
-    res.send("Express + Typescript Boilerplate");
+    res.send(`Express + Typescript Boilerplate ${config.databaseUrl}`);
 });
 
 //[error middleware]
