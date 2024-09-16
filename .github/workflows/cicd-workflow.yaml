@@ -22,12 +22,6 @@ jobs:
             - name: Publish image to docker hub
               run: docker push barcafan830/nodejs-app:latest
 
-            - name: Create an env file
-              run: |
-                  touch .env
-                  echo "${{ secrets.PROD }}" > .env
-
-
 
     deploy:
         needs: build
