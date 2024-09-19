@@ -16,14 +16,6 @@
             ],
             "essential": true,
             "environment": [
-                {
-                    "name": "PORT",
-                    "value": "3000"
-                },
-                {
-                    "name": "DATABASE_URL",
-                    "value": "mongodb+srv://anix:test123@callthewaiter.ukjiq.mongodb.net/ciCdPipeline"
-                }
             ],
             "environmentFiles": [],
             "mountPoints": [],
