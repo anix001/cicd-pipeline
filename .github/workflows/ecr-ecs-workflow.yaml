@@ -6,7 +6,7 @@ on:
             - deploy/github-ecr-ecs
 
 jobs:
-    build:
+    build-and-deploy:
         runs-on: [ubuntu-latest]
 
         steps:

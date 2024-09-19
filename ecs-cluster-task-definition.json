@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:703553147395:task-definition/ecs-cluster-task:1",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:703553147395:task-definition/ecs-cluster-task:4",
     "containerDefinitions": [
         {
             "name": "ecs-cluster-container",
@@ -15,7 +15,16 @@
                 }
             ],
             "essential": true,
-            "environment": [],
+            "environment": [
+                {
+                    "name": "PORT",
+                    "value": "3000"
+                },
+                {
+                    "name": "DATABASE_URL",
+                    "value": "mongodb+srv://anix:test123@callthewaiter.ukjiq.mongodb.net/ciCdPipeline"
+                }
+            ],
             "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
@@ -32,18 +41,30 @@
                 },
                 "secretOptions": []
             },
+            "healthCheck": {
+                "command": [
+                    "CMD-SHELL",
+                    "curl -f http://localhost:8000/health || exit 1"
+                ],
+                "interval": 30,
+                "timeout": 5,
+                "retries": 3
+            },
             "systemControls": []
         }
     ],
     "family": "ecs-cluster-task",
     "executionRoleArn": "arn:aws:iam::703553147395:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 1,
+    "revision": 4,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
         {
             "name": "com.amazonaws.ecs.capability.logging-driver.awslogs"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.24"
         },
         {
             "name": "ecs.capability.execution-role-awslogs"
@@ -56,6 +77,9 @@
         },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.28"
+        },
+        {
+            "name": "ecs.capability.container-health-check"
         },
         {
             "name": "ecs.capability.execution-role-ecr-pull"
@@ -81,10 +105,10 @@
     "cpu": "1024",
     "memory": "3072",
     "runtimePlatform": {
-        "cpuArchitecture": "ARM64",
+        "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-09-19T10:58:56.068Z",
+    "registeredAt": "2024-09-19T15:36:16.733Z",
     "registeredBy": "arn:aws:sts::703553147395:assumed-role/AWSReservedSSO_PowerUserAccess_5a5ea80f67bf5510/AChaudhary@pmsquare.com",
     "tags": []
 }

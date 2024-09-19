@@ -22,6 +22,12 @@ app.get('/', (req:Request, res:Response)=>{
     res.send(`Express + Typescript Boilerplate`);
 });
 
+//health route
+app.get('/health',(req:Request, res:Response)=>{
+    res.sendStatus(200).send("Everything is okay");
+})
+
+
 //[error middleware]
 app.use(errorHandler);
 
